@@ -9,8 +9,20 @@
 // @supportURL   https://github.com/metapone/userscript-collection/issues
 // @noframes
 // @match        *://mangadex.org/chapter/*
-// @grant        none
+// @grant        GM_addStyle
 // ==/UserScript==
+
+GM_addStyle ('\
+    /* Fix sidebar stretched outside the screen because of the collapser */\
+    .no-gutters > .col.reader-controls {\
+        padding-right: 34px;\
+    }\
+\
+    /* Fix overlapping flex items */\
+    .reader-controls-mode, .reader-controls-footer {\
+        flex-shrink: 0 !important;\
+     }\
+');
 
 function insertComments() {
   formatSidebar()
@@ -26,6 +38,8 @@ function insertComments() {
 
       wrapperNode.setAttribute('class', 'inline-comments')
       wrapperNode.style.overflow = 'auto'
+      wrapperNode.style.overflowWrap = 'break-word'
+      wrapperNode.style.wordWrap = 'break-word'
 
       for (let i = 0; i < posts.length; i++) {
           let poster = posts[i].querySelector("td:first-child span")
@@ -54,14 +68,14 @@ function formatSidebar() {
   let modeNode = document.querySelector('.reader-controls-mode')
   let footerNode = document.querySelector('.reader-controls-footer')
   let pageNode = document.querySelector('.reader-controls-pages')
-  let oldWrapperNode = document.querySelector('.inline-comments')
+  let oldWrapperNodes = document.querySelectorAll('.inline-comments')  // Multiple divs can show up if users switch chapter too fast
 
   // Clear old comments
-  if (oldWrapperNode) oldWrapperNode.parentNode.removeChild(oldWrapperNode)
-
-  // Fix overlapping flex items
-  modeNode.style.flexShrink = 0
-  footerNode.style.flexShrink = 0
+  if (oldWrapperNodes) {
+    for (let i = 0; i < oldWrapperNodes.length; i++) {
+      oldWrapperNodes[i].parentNode.removeChild(oldWrapperNode)
+    }
+  }
 
   // Hide sidebar components. Comment out anything you want to keep
   modeNode.style.setProperty('display', 'none', 'important')    // Common keyboard shortcuts
