@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MangaDex Inline Comments
 // @namespace    metapone
-// @version      1.0.0
+// @version      0.0.1
 // @description  Display chapter comments inside MangaDex's sidebar
 // @author       metapone
 // @license      GPL-2.0-only; https://opensource.org/licenses/GPL-2.0
@@ -73,7 +73,7 @@ function formatSidebar() {
   // Clear old comments
   if (oldWrapperNodes) {
     for (let i = 0; i < oldWrapperNodes.length; i++) {
-      oldWrapperNodes[i].parentNode.removeChild(oldWrapperNode)
+      oldWrapperNodes[i].parentNode.removeChild(oldWrapperNodes[i])
     }
   }
 
