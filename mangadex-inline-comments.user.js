@@ -13,9 +13,9 @@
 // ==/UserScript==
 
 GM_addStyle ('\
-    /* Fix sidebar stretched outside the screen because of the collapser */\
-    .no-gutters > .col.reader-controls {\
-        padding-right: 34px;\
+    /* Fix unable to click on scrollbar because of invisible swiping divs */\
+    #right_swipe_area {\
+        display: none;\
     }\
 \
     /* Fix overlapping flex items */\
@@ -68,7 +68,7 @@ function formatSidebar() {
   let modeNode = document.querySelector('.reader-controls-mode')
   let footerNode = document.querySelector('.reader-controls-footer')
   let pageNode = document.querySelector('.reader-controls-pages')
-  let oldWrapperNodes = document.querySelectorAll('.inline-comments')  // Multiple divs can show up if users switch chapter too fast
+  let oldWrapperNodes = document.querySelectorAll('.inline-comments') // Multiple divs can show up if users switch chapter too fast
 
   // Clear old comments
   if (oldWrapperNodes) {
@@ -78,9 +78,9 @@ function formatSidebar() {
   }
 
   // Hide sidebar components. Comment out anything you want to keep
-  modeNode.style.setProperty('display', 'none', 'important')    // Common keyboard shortcuts
-  footerNode.style.setProperty('display', 'none', 'important')  // Footer credit
-  pageNode.style.setProperty('display', 'none', 'important')    // Pagination
+  modeNode.style.setProperty('display', 'none', 'important') // Common keyboard shortcuts
+  footerNode.style.setProperty('display', 'none', 'important') // Footer credit
+  pageNode.style.setProperty('display', 'none', 'important') // Pagination
 }
 
 function fixSpoilerButton(post) {
