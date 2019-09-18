@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MangaDex Inline Comments
 // @namespace    metapone
-// @version      0.0.2
+// @version      0.1
 // @description  Display chapter comments inside MangaDex's sidebar
 // @author       metapone
 // @license      GPL-2.0-only; https://opensource.org/licenses/GPL-2.0
@@ -21,7 +21,12 @@ GM_addStyle ('\
     /* Fix overlapping flex items */\
     .reader-controls-mode, .reader-controls-footer {\
         flex-shrink: 0 !important;\
-     }\
+    }\
+\
+    /* Fix sidebar going off-screen because of the collapser */\
+    .reader-controls {\
+        max-width: calc(100% - 34px);\
+    }\
 ');
 
 function updateSidebar() {
