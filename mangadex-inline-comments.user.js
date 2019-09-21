@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         MangaDex Inline Comments
 // @namespace    metapone
-// @version      0.1
+// @version      0.2
 // @description  Display chapter comments inside MangaDex's sidebar
 // @author       metapone
 // @license      GPL-2.0-only; https://opensource.org/licenses/GPL-2.0
@@ -130,7 +130,7 @@ function insertComments() {
     if (xhr.status !== 200 || oldChapterId !== lastChapterId) return
 
     let htmlDocument = xhr.responseXML.documentElement
-    let posts = htmlDocument.querySelectorAll('table .post')
+    let posts = htmlDocument.querySelectorAll('table .post:not(.post-moderated)')
     let wrapperNode = document.createElement('div')
 
     wrapperNode.className = 'inline-comments'
