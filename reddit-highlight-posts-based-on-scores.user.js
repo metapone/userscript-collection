@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Reddit Highlight Posts Based on Scores
 // @namespace   metapone
-// @version     0.1
+// @version     0.1.1
 // @description Highligh posts above a certain score
 // @author      metapone
 // @license     GPL-2.0-only; https://opensource.org/licenses/GPL-2.0
@@ -11,6 +11,8 @@
 // @match       *://*.reddit.com/*
 // @grant       none
 // ==/UserScript==
+
+if (window.location.href.indexOf('comments') !== -1) return;
 
 const threshold = 500;  // Minimum score to highlight
 const color = "yellow"; // Highlight CSS color
