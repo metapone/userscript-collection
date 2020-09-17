@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         FGO Wikia Prefer NA Translation
+// @name         Wikia FGO Prefer NA Translation
 // @namespace    metapone
 // @match        *://fategrandorder.fandom.com/*
 // @grant        none
