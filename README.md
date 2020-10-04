@@ -1,3 +1,6 @@
+## Fahasa Highlight Flashsale Deals Based on Discount
+Highligh deals above a certain discount value
+
 ## MangaDex Inline Comments
 Preview chapter comments right inside the sidebar
 
