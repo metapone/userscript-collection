@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name        Fahasa Highlight Flashsale Deals Based on Discount
 // @namespace   metapone
-// @version     1.0
+// @version     1.1
 // @description Highligh deals above a certain discount value
 // @author      metapone
 // @license     GPL-2.0-only; https://opensource.org/licenses/GPL-2.0
 // @homepage    https://github.com/metapone/userscript-collection
 // @supportURL  https://github.com/metapone/userscript-collection/issues
 // @noframes
-// @match       *://www.fahasa.com/flashsale
+// @match       *://www.fahasa.com/flashsale*
 // @grant       none
 // ==/UserScript==
 
