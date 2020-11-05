@@ -3,7 +3,7 @@
 // @namespace    metapone
 // @match        *://fategrandorder.fandom.com/*
 // @grant        none
-// @version      2.0
+// @version      2.1
 // @author       metapone
 // @description  Display by default official translation instead of fan translation
 // @license      GPL-2.0-only; https://opensource.org/licenses/GPL-2.0
@@ -14,7 +14,8 @@ function callback(mutationsList, observer) {
 	for (let mutation of mutationsList) {
 		for (let addedNode of mutation.addedNodes) {
 			if (addedNode.className === 'tabbernav') {
-				addedNode.querySelector("a[title='NA']").click();
+				const NATab = addedNode.querySelector("a[title='NA']");
+				if (NATab) NATab.click();
 			}
 		}
 	}
