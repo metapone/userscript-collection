@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Fahasa Highlight Flashsale Deals Based on Discount
 // @namespace   metapone
-// @version     1.1
+// @version     1.2
 // @description Highligh deals above a certain discount value
 // @author      metapone
 // @license     GPL-2.0-only; https://opensource.org/licenses/GPL-2.0
@@ -12,7 +12,7 @@
 // @grant       none
 // ==/UserScript==
 
-const threshold = 50;  // Minimum sale to highlight
+const threshold = 50; // Minimum sale to highlight
 const color = "yellow"; // Highlight CSS color
 
 function callback(mutationsList, observer) {
@@ -25,7 +25,9 @@ function callback(mutationsList, observer) {
 
 function highlightSale(node) {
 	for (let item of node.querySelectorAll(".flashsale-item")) {
-		const discount = parseInt(item.querySelector(".discount-l-fs").innerText, 10);
+		const discountNode = item.querySelector(".discount-l-fs");
+		if (!discountNode) continue;
+		const discount = parseInt(discountNode.innerText, 10);
 		if (discount >= threshold) item.style.backgroundColor = color;
 	}
 }
