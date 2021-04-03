@@ -10,7 +10,7 @@
 // @homepage     https://github.com/metapone/userscript-collection
 // @supportURL   https://github.com/metapone/userscript-collection/issues
 // ==/UserScript==
-function callback(mutationsList, observer) {
+function callback(mutationsList) {
 	for (let mutation of mutationsList) {
 		for (let addedNode of mutation.addedNodes) {
 			if (addedNode.className === 'tabbernav') {

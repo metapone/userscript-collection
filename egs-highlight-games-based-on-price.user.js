@@ -16,7 +16,7 @@
   const threshold = 14.99; // Minimum price to highlight
   const color = "blue"; // Highlight CSS color
 
-  function callback(mutationsList, observer) {
+  function callback(mutationsList) {
     for (let mutation of mutationsList) {
       for (let addedNode of mutation.addedNodes) {
         highlightItem(addedNode);

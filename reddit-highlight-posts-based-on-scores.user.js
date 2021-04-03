@@ -17,7 +17,7 @@ if (window.location.href.indexOf('comments') !== -1) return;
 const threshold = 500;  // Minimum score to highlight
 const color = "yellow"; // Highlight CSS color
 
-function callback(mutationsList, observer) {
+function callback(mutationsList) {
 	for (let mutation of mutationsList) {
 		for (let addedNode of mutation.addedNodes) {
 			highlightPosts(addedNode);

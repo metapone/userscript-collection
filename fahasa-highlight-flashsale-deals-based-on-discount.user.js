@@ -15,14 +15,6 @@
 const threshold = 50; // Minimum sale to highlight
 const color = "yellow"; // Highlight CSS color
 
-function callback(mutationsList, observer) {
-	for (let mutation of mutationsList) {
-		for (let addedNode of mutation.addedNodes) {
-			highlightSale(addedNode);
-		}
-	}
-}
-
 function highlightSale(node) {
 	for (let item of node.querySelectorAll(".flashsale-item")) {
 		const discountNode = item.querySelector(".discount-l-fs");
@@ -32,8 +24,16 @@ function highlightSale(node) {
 	}
 }
 
-window.addEventListener('load', function() {
- 	const targetNode = document.querySelector(".flashsale-page-period-content");
+function callback(mutationsList) {
+	for (let mutation of mutationsList) {
+		for (let addedNode of mutation.addedNodes) {
+			highlightSale(addedNode);
+		}
+	}
+}
+
+window.addEventListener('load', function () {
+	const targetNode = document.querySelector(".flashsale-page-period-content");
 	const observer = new MutationObserver(callback);
 	observer.observe(targetNode, { subtree: true, childList: true });
 	highlightSale(targetNode);

@@ -12,7 +12,7 @@
 // @grant        GM_addStyle
 // ==/UserScript==
 
-GM_addStyle ('\
+GM_addStyle('\
 	/* Fix unable to click on scrollbar because of invisible swiping divs */\
 	#right_swipe_area {\
 		display: none;\
@@ -76,7 +76,7 @@ function addToggleCommentButton() {
 		let usageNode = document.createElement('span');
 		usageNode.id = 'kbd_comment_usage';
 		usageNode.textContent = 'Show comments';
-		
+
 		toggleCommentNode.appendChild(kbNode);
 		toggleCommentNode.appendChild(whitespaceNode);
 		toggleCommentNode.appendChild(iconNode);
@@ -87,7 +87,7 @@ function addToggleCommentButton() {
 		/* Event listener */
 		toggleCommentNode.addEventListener('click', handleToggleComments);
 
-		document.addEventListener('keydown', function(e) {
+		document.addEventListener('keydown', function (e) {
 			// 12 is 5 in numpad with NumLock off
 			// 101 is 5 in numpad with NumLock on
 			// 75 is k
@@ -123,9 +123,9 @@ function toggleComments(isDisplay) {
 function insertComments() {
 	let oldChapterId = lastChapterId;
 	let xhr = new XMLHttpRequest();
-	xhr.open('GET', '/chapter/'+ lastChapterId + '/comments');
+	xhr.open('GET', '/chapter/' + lastChapterId + '/comments');
 	xhr.responseType = 'document';
-	xhr.addEventListener('load', function() {
+	xhr.addEventListener('load', function () {
 		// Only display comments if user hasn't switched chapter before the request finished
 		if (xhr.status !== 200 || oldChapterId !== lastChapterId) return;
 
@@ -151,7 +151,7 @@ function insertComments() {
 		// Button to redirect to chapter thread
 		let toThread = htmlDocument.querySelector('table+div');
 		if (toThread) wrapperNode.appendChild(toThread);
-		
+
 		let footerNode = document.querySelector('.reader-controls-footer');
 		footerNode.parentNode.insertBefore(wrapperNode, footerNode);
 
@@ -163,7 +163,7 @@ function insertComments() {
 function fixSpoilerButton(post) {
 	let spoilerBtns = post.querySelectorAll('.btn-spoiler');
 	for (let i = 0; i < spoilerBtns.length; i++) {
-		spoilerBtns[i].addEventListener('click', function() {
+		spoilerBtns[i].addEventListener('click', function () {
 			this.nextElementSibling.classList.toggle('display-none');
 		});
 	}
@@ -172,7 +172,7 @@ function fixSpoilerButton(post) {
 let lastPath = '';
 let lastChapterId = '';
 
-setInterval (function () {
+setInterval(function () {
 	if (lastPath !== location.pathname) {
 		lastPath = location.pathname;
 		let path = location.pathname.split('/');
